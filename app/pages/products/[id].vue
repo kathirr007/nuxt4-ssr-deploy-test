@@ -1,6 +1,13 @@
 <script setup>
 const productId = useRoute().params.id;
 
+definePageMeta({
+  pageTransition: {
+    name: 'slide-right',
+    mode: 'out-in'
+  },
+})
+
 const currentSlide = ref(0)
 
 const slideTo = (nextSlide) => (currentSlide.value = nextSlide)
@@ -76,6 +83,32 @@ const { data: productDetails } = await useAsyncData('product-details', () => {
 
 
 <style scoped>
+/* Page transition styles */
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: all 0.2s;
+}
+.slide-left-enter-from {
+  opacity: 0;
+  transform: translate(50px, 0);
+}
+.slide-left-leave-to {
+  opacity: 0;
+  transform: translate(-50px, 0);
+}
+.slide-right-enter-from {
+  opacity: 0;
+  transform: translate(-50px, 0);
+}
+.slide-right-leave-to {
+  opacity: 0;
+  transform: translate(50px, 0);
+}
+
+/* Page transition stles ends */
+
 .image-gallery {
     display: flex;
     gap: 1rem;
