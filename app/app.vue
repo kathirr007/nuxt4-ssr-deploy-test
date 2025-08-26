@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-import type { IProduct } from '~~/server/models/product'
-
-const productsData = ref([])
 
 await useAsyncData('healthCheck', async () => {
   return $fetch('/api/_health').then(response => {
