@@ -1,9 +1,11 @@
 <script lang="ts" setup>
 
+const apiHealth = ref()
+
 await useAsyncData('healthCheck', async () => {
   return $fetch('/api/_health').then(response => {
     console.log(response)
-    return response
+    apiHealth.value = response
   })
 })
 
