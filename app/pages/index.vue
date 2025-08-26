@@ -20,7 +20,9 @@ const { data: products } = await useAsyncData('products', () =>
     <h1>Products List</h1>
     <ul v-if="products.length">
       <li v-for="item in products" :key="item._id">
-        {{ item.title }}
+        <NuxtLink :to="`/products/${item._id}`">
+          {{ item.title }}
+        </NuxtLink>
       </li>
     </ul>
   </div>
